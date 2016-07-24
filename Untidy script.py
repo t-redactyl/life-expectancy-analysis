@@ -163,6 +163,10 @@ plt.show()
 # Create the variable
 totaldf['TransformedLife'] = np.sqrt((max(totaldf['LifeExpectancy']) + 1) - totaldf['LifeExpectancy'])
 
+# Standardise the predictors
+for i in list(totaldf.columns.values)[2:14]:
+    totaldf['%s' % i] = (totaldf['%s' % i] - totaldf['%s' % i].mean()) / totaldf['%s' %i].std()
+
 # Try out the ridge/LASSO table of results from blog post
 from matplotlib.pylab import rcParams
 rcParams['figure.figsize'] = 12, 10
