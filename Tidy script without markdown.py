@@ -8,9 +8,6 @@ from sklearn.linear_model import Lasso
 # Health Observatory data repo (http://www.who.int/gho/en/)
 # Downloaded on 24th July, 2016
 
-# Make note in presentation that I already know that Smoking, Physical Activity, Malaria and HIV
-# have too many missing values to include, so I won't even bother importing them.
-
 def dataImport(dataurl):
 	url = dataurl
 	return pd.read_csv(url)
@@ -105,32 +102,41 @@ def cleaningData(data, rowsToKeep, outcome, colsToDrop = [], varNames = [], cols
 life = cleaningData(life, 1, 'LifeExpectancy', range(3, 8), ['Country', 'Year', 'LifeExpectancy'],
 					['Year', 'LifeExpectancy'], 2015)
 
+oweight = cleaningData(oweight, 3, 'Overweight', range(2, 7), ['Country', 'Overweight'], ['Overweight'])
+
+chol = cleaningData(chol, 1, 'Cholesterol', [2, 4, 5, 6, 7, 8], ['Country', 'Year', 'Cholesterol'],
+                    ['Year', 'Cholesterol'], 2008)
+
+bsugar = cleaningData(bsugar, 1, 'BloodSugar', [2, 4, 5, 6, 7], ['Country', 'Year', 'BloodSugar'],
+                    ['Year', 'BloodSugar'], 2014)
+
+sanitation = cleaningData(sanitation, 1, 'ImprovedWater', [2, 3, 5, 6], 
+                           ['Country', 'Year', 'ImprovedWater', 'ImprovedSanitation'],
+                           ['Year', 'ImprovedWater', 'ImprovedSanitation'], 2015)
+
+maternal = cleaningData(maternal, 0, 'MaternalDeaths', [3], ['Country', 'Year', 'MaternalDeaths'],
+                           ['Year', 'MaternalDeaths'], 2015)
+
+uvrad = cleaningData(uvrad, 1, 'UVRadiation', [], ['Country', 'UVRadiation'], 
+                      ['UVRadiation'])
+
+homicides = cleaningData(homicides, 1, 'HomicideRate', [1], ['Country', 'HomicideRate'],
+                    ['HomicideRate'])
+
+traffdeath = cleaningData(traffdeath, 1, 'TrafficDeaths', [1], ['Country', 'TrafficDeaths'],
+                    ['TrafficDeaths'])
+
+tb = cleaningData(tb, 0, 'Tubercululosis', [2, 4, 5], ['Country', 'Year', 'Tubercululosis'],
+                    ['Year', 'Tubercululosis'], 2014)
+
+suicide = cleaningData(suicide, 2, 'Suicide', [2, 3], ['Country', 'Suicide'],
+                    ['Suicide'])
+
+
 alcohol = cleaningData(alcohol, 1, 'Alcohol', [1] + range(3, 8) + range(9, 19), ['Country', 'Type', 'Alcohol'],
                     ['Alcohol'])
 alcohol = alcohol[alcohol['Type'].str.contains("All types")]
 del alcohol['Type']
-
-oweight = cleaningData(oweight, 3, 'Overweight', range(2, 7), ['Country', 'Overweight'], 
-					  ['Overweight'])
-chol = cleaningData(chol, 1, 'Cholesterol', [2, 4, 5, 6, 7, 8], ['Country', 'Year', 'Cholesterol'],
-                    ['Year', 'Cholesterol'], 2008)
-bsugar = cleaningData(bsugar, 1, 'BloodSugar', [2, 4, 5, 6, 7], ['Country', 'Year', 'BloodSugar'],
-                    ['Year', 'BloodSugar'], 2014)
-sanitation = cleaningData(sanitation, 1, 'ImprovedWater', [2, 3, 5, 6], 
-                           ['Country', 'Year', 'ImprovedWater', 'ImprovedSanitation'],
-                           ['Year', 'ImprovedWater', 'ImprovedSanitation'], 2015)
-maternal = cleaningData(maternal, 0, 'MaternalDeaths', [3], ['Country', 'Year', 'MaternalDeaths'],
-                           ['Year', 'MaternalDeaths'], 2015)
-uvrad = cleaningData(uvrad, 1, 'UVRadiation', [], ['Country', 'UVRadiation'], 
-                      ['UVRadiation'])
-homicides = cleaningData(homicides, 1, 'HomicideRate', [1], ['Country', 'HomicideRate'],
-                    ['HomicideRate'])
-traffdeath = cleaningData(traffdeath, 1, 'TrafficDeaths', [1], ['Country', 'TrafficDeaths'],
-                    ['TrafficDeaths'])
-tb = cleaningData(tb, 0, 'Tubercululosis', [2, 4, 5], ['Country', 'Year', 'Tubercululosis'],
-                    ['Year', 'Tubercululosis'], 2014)
-suicide = cleaningData(suicide, 2, 'Suicide', [2, 3], ['Country', 'Suicide'],
-                    ['Suicide'])
 
 # Now that the data is cleaned, time to merge all of the variables into one DataFrame.
 def mergeFunc(dataframe1, dataframe2):
