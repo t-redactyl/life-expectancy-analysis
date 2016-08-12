@@ -305,5 +305,4 @@ totaldf['PredLifeIntercept'] = (3.4 + 0.045*totaldf['Alcohol'] - 0.36*totaldf['C
                                 0.23*totaldf['Tuberculosis'] + 0.045*totaldf['Suicide'])
 totaldf['PredLifeIntercept'] = (max(totaldf['LifeExpectancy']) + 1) - (totaldf['PredLifeIntercept']**2)
 
-
-
+# -*- end -*-
