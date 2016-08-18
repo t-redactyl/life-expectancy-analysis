@@ -20,22 +20,23 @@ suicide <- read.csv(paste0(path, "Suicide_final year.csv"))
 
 # Screening the data
 head(life)
-life['LifeExpectancy'].dtype
+class(life$LifeExpectancy)
 
-smoking[ :5]
-smoking['Smoking'].dtype
-smoking['Smoking'] = smoking['Smoking'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
-smoking['Smoking'].dtype
+head(smoking)
+class(smoking$Smoking)
+smoking$Smoking <- as.numeric(as.character(smoking$Smoking))
+class(smoking$Smoking)
 
-alcohol[ :5]
-alcohol['Alcohol'].dtype
-alcohol['Alcohol'] = alcohol['Alcohol'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
-alcohol['Alcohol'].dtype
+head(alcohol)
+class(alcohol$Alcohol)
+alcohol$Alcohol <- as.numeric(as.character(alcohol$Alcohol))
+class(alcohol$Alcohol)
 
-oweight[ :5]
-oweight['Overweight'] = oweight['Overweight'].apply(lambda x: x.split(' [')[0])
-oweight['Overweight'] = oweight['Overweight'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
-oweight['Overweight'].dtype
+#library(stringr)
+head(oweight)
+oweight$Overweight <- gsub("\\[.*", "", oweight$Overweight)
+oweight$Overweight <- as.numeric(oweight$Overweight)
+class(oweight)
 
 exercise[ :5]
 exercise['PhysicalActivity'].dtype
