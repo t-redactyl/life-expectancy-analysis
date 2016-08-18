@@ -38,61 +38,60 @@ oweight$Overweight <- gsub("\\[.*", "", oweight$Overweight)
 oweight$Overweight <- as.numeric(oweight$Overweight)
 class(oweight)
 
-exercise[ :5]
-exercise['PhysicalActivity'].dtype
-exercise['PhysicalActivity'] = exercise['PhysicalActivity'].apply(lambda x: x.split(' [')[0])
-exercise['PhysicalActivity'] = exercise['PhysicalActivity'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
-exercise['PhysicalActivity'].dtype
+head(exercise)
+exercise$PhysicalActivity <- gsub("\\[.*", "", exercise$PhysicalActivity)
+exercise$PhysicalActivity <- as.numeric(exercise$PhysicalActivity)
+class(exercise$PhysicalActivity)
 
-chol[ :5]
-chol['Cholesterol'] = chol['Cholesterol'].apply(lambda x: x.split(' [')[0])
-chol['Cholesterol'] = chol['Cholesterol'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
-chol['Cholesterol'].dtype
+head(chol)
+chol$Cholesterol <- gsub("\\[.*", "", chol$Cholesterol)
+chol$Cholesterol <- as.numeric(chol$Cholesterol)
+class(chol$Cholesterol)
 
-bsugar[ :5]
-bsugar['BloodSugar'] = bsugar['BloodSugar'].apply(lambda x: x.split(' [')[0])
-bsugar['BloodSugar'] = bsugar['BloodSugar'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
-bsugar['BloodSugar'].dtype
+head(bsugar)
+bsugar$BloodSugar <- gsub("\\[.*", "", bsugar$BloodSugar)
+bsugar$BloodSugar <- as.numeric(bsugar$BloodSugar)
+class(bsugar$BloodSugar)
 
-uvrad[ :5]
-uvrad['UVRadiation'].dtype
+head(uvrad)
+class(uvrad$UVRadiation)
 
-water[ :5]
-water['ImprovedWater'].dtype
+head(water)
+class(water$ImprovedWater)
 
-sanitation[ :5]
-sanitation['ImprovedSanitation'].dtype
+head(sanitation)
+class(sanitation$ImprovedSanitation)
 
-maternal[ :5]
-maternal['MaternalDeaths'] = maternal['MaternalDeaths'].apply(lambda x: x.split(' [')[0])
-maternal['MaternalDeaths'] = maternal['MaternalDeaths'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
-maternal['MaternalDeaths'].dtype
+head(maternal)
+maternal$MaternalDeaths <- gsub("\\[.*", "", maternal$MaternalDeaths)
+maternal$MaternalDeaths <- as.numeric(maternal$MaternalDeaths)
+class(maternal$MaternalDeaths)
 
-homicides[ :5]
-homicides['Homicides'] = homicides['Homicides'].apply(lambda x: x.split(' [')[0])
-homicides['Homicides'] = homicides['Homicides'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
-homicides['Homicides'].dtype
+head(homicides)
+homicides$Homicides <- gsub("\\[.*", "", homicides$Homicides)
+homicides$Homicides <- as.numeric(homicides$Homicides)
+class(homicides$Homicides)
 
-traffdeath[ :5]
-traffdeath['RoadDeaths'].dtype
+head(traffdeath)
+class(traffdeath$RoadDeaths)
 
-malaria[ :5]
-malaria['Malaria'] = malaria['Malaria'].str.replace(' ', '')
-malaria['Malaria'] = malaria['Malaria'].str.replace('&lt;', '')
-malaria['Malaria'] = malaria['Malaria'].apply(lambda x: x.split('[')[0])
-malaria['Malaria'] = malaria['Malaria'].apply(lambda x: pd.to_numeric(x, errors ='coerce'))
-malaria['Malaria'].dtype
+head(malaria)
+malaria$Malaria <- gsub(" |&lt;", "", malaria$Malaria)
+malaria$Malaria <- gsub("\\[.*", "", malaria$Malaria)
+malaria$Malaria <- as.numeric(malaria$Malaria)
+class(malaria$Malaria)
 
-hiv[ :5]
-hiv['HIV'] = hiv['HIV'].str.replace(' ', '')
-hiv['HIV'] = hiv['HIV'].str.replace('&lt;', '')
-hiv['HIV'] = hiv['HIV'].apply(lambda x: x.split('[')[0])
-hiv['HIV'] = hiv['HIV'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
+head(hiv)
+hiv$HIV <- gsub(" |&lt;", "", hiv$HIV)
+hiv$HIV <- gsub("\\[.*", "", hiv$HIV)
+hiv$HIV <- as.numeric(hiv$HIV)
+class(hiv$HIV)
 
-tb[ :5]
-tb['Tuberculosis'] = tb['Tuberculosis'].apply(lambda x: x.split(' [')[0])
-tb['Tuberculosis'] = tb['Tuberculosis'].apply(lambda x: pd.to_numeric(x, errors ='coerce')) 
-tb['Tuberculosis'].dtype
+head(tb)
+tb$Tuberculosis <- gsub("\\[.*", "", tb$Tuberculosis)
+tb$Tuberculosis <- as.numeric(tb$Tuberculosis)
+class(tb$Tuberculosis)
 
-suicide[ :5]
-suicide['Suicide'].dtype
+head(suicide)
+class(suicide$Suicide)
+
